@@ -8,8 +8,6 @@ exports.up = async function(knex) {
     tbl.varchar('recipe_name', 128)
       .notNullable()
       .unique();
-    tbl.text('steps')
-      .notNullable();
     tbl.timestamp('created_at')
       .defaultTo(knex.fn.now())
       .notNullable();
@@ -31,7 +29,6 @@ exports.up = async function(knex) {
   await knex.schema.createTable('ingredients', tbl => {
     tbl.increments('ingredient_id');
     tbl.string('ingredient_name').notNullable();
-  
   })
   await knex.schema.createTable('step_ingredient', tbl => {
     tbl.float('ingredient_quantity')
@@ -57,8 +54,8 @@ exports.up = async function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = async function(knex) {
-  await knex.schema.dropTableIfExists('recipe_ingredient', tbl => {})
-  await knex.schema.dropTableIfExists('recipes', tbl => {})
+  await knex.schema.dropTableIfExists('step_ingredient', tbl => {})
+  await knex.schema.dropTableIfExists('ingredients', tbl => {})
   await knex.schema.dropTableIfExists('steps', tbl => {})
   await knex.schema.dropTableIfExists('recipes', tbl => {})
 

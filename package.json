@@ -1,11 +1,11 @@
 {
   "name": "node-db4-project",
   "version": "1.0.0",
-  "main" :"index.js",
+  "main": "index.js",
   "scripts": {
-    "server" : "nodemon index.js",
+    "server": "nodemon index.js",
     "migrate": "knex migrate:latest",
-    "rollback" : "knex migrate:rollback"
+    "rollback": "knex migrate:rollback"
   },
   "repository": {
     "type": "git",
